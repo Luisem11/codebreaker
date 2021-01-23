@@ -15,9 +15,8 @@ router.get('/setsecret/:secret', function (req, res) {
     });
 });
 
-router.get('/guess/:secret/:number', function (req, res) {
+router.get('/guess/:number', function (req, res) {
     number = req.params.number;
-    secret = req.params.secret;
     res.json({
         result: codebreaker(secret, number)
     });
