@@ -3,21 +3,30 @@ const router = express.Router();
 var secret = 0;
 
 router.get('/', function (req, res) {
-    res.json({
+    res.status(200).json({
+
         message: 'API codebreker'
     });
 });
 
-router.get('/setsecret/:secret', function (req, res) {
+router.get('/set-secret/:secret', function (req, res) {
     secret = req.params.secret;
-    res.json({
+    res.status(200).json({
         message: 'Ok, let the game begins'
     });
 });
 
+router.get('/get-secret/', function (req, res) {
+
+    res.status(200).json({
+        secret
+    });
+});
+
+
 router.get('/guess/:number', function (req, res) {
     number = req.params.number;
-    res.json({
+    res.status(200).json({
         result: codebreaker(secret, number)
     });
 });
